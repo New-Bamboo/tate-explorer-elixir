@@ -10,6 +10,7 @@ defmodule TateExplorer.Artist do
     field :dates, :string
     field :year_of_birth, :datetime
     field :year_of_death, :datetime
+    field :place_of_birth, :string
     field :place_of_death, :string
     field :url, :string
   end

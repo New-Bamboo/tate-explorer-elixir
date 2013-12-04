@@ -10,6 +10,7 @@ defmodule TateExplorer.Repo.Migrations.CreateArtists do
       dates text,
       year_of_birth date,
       year_of_death date,
+      place_of_birth text,
       place_of_death text,
       url text
     );
