@@ -9,11 +9,15 @@ defmodule TateExplorer.ArtistPresenter do
       name: artist.name,
       gender: artist.gender,
       dates: artist.dates,
-      year_of_birth: artist.year_of_birth.year,
-      year_of_death: artist.year_of_death.year,
+      year_of_birth: artist.year_of_birth |> extract_year,
+      year_of_death: artist.year_of_death |> extract_year,
       place_of_birth: artist.place_of_birth,
       place_of_death: artist.place_of_death,
       url: artist.url
     ]
   end
+
+  defp extract_year(nil), do: nil
+  defp extract_year({ year, _month, _day }), do: year
+  defp extract_year(ecto_datetime), do: ecto_datetime.year
 end

@@ -1,6 +1,11 @@
 defmodule ApplicationRouter do
   use Dynamo.Router
 
+  alias TateExplorer.ArtistQueries
+  alias TateExplorer.ArtistPresenter
+
+  filter JSON.Dynamo.Filter
+
   prepare do
     # Pick which parts of the request you want to fetch
     # You can comment the line below if you don't need
@@ -16,4 +21,9 @@ defmodule ApplicationRouter do
     conn = conn.assign(:title, "Welcome to Dynamo!")
     render conn, "index.html"
   end
+
+  get "/artists" do
+    conn.put_private :result_object, ArtistQueries.all |> ArtistPresenter.wrap_list
+  end
+
 end
