@@ -11,3 +11,17 @@ defmodule TateExplorer.TestCase do
     :ok
   end
 end
+
+defmodule TateExplorer.RepoTestCase do
+  use ExUnit.CaseTemplate
+  alias Ecto.Adapters.Postgres
+  alias TateExplorer.Repo
+
+  setup do
+    :ok = Postgres.begin_test_transaction(Repo)
+  end
+
+  teardown do
+    :ok = Postgres.rollback_test_transaction(Repo)
+  end
+end
