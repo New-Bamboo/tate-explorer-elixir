@@ -33,6 +33,7 @@ defmodule TateExplorer.Artist do
     Repo.create(artist)
   end
 
+  defp datetime_from_year(""), do: nil
   defp datetime_from_year(year_string) do
     year_integer = binary_to_integer(year_string)
     Ecto.DateTime[year: year_integer, month: 1, day: 1, hour: 0, min: 0, sec: 0]
