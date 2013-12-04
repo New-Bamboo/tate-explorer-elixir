@@ -33,6 +33,8 @@ The original dataset is in UTF-8 with DOS line endings and some unicode issues, 
     brew install dos2unix
     dos2unix -n artist_data_original.csv artist_data_unix.csv
     cat artist_data_unix.csv | sed 's/–/-/' > artist_data.csv
+    dos2unix -n artwork_data_original.csv artwork_data_unix.csv
+    cat artwork_data_unix.csv | sed 's/–/-/' > artwork_data.csv
 
 Resources:
 
