@@ -26,12 +26,13 @@ Alternatively, your env can be better managed with [Direnv](https://github.com/z
 
 ## Converting the original files
 
-Place csv files in `data/` and rename it `artist_data.csv` and `artwork_data.csv`.
+Place csv files in `data/` and rename them `artist_data.csv` and `artwork_data.csv`.
 
-The original dataset is in UTF-8 with DOS line endings, so you need to convert it.
+The original dataset is in UTF-8 with DOS line endings and some unicode issues, so you need to convert it.
 
     brew install dos2unix
-    dos2unix -n artwork_data_original.csv artwork_data.csv
+    dos2unix -n artist_data_original.csv artist_data_unix.csv
+    cat artist_data_unix.csv | sed 's/–/-/' > artist_data.csv
 
 Resources:
 
