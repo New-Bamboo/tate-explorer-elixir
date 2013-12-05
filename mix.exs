@@ -22,6 +22,7 @@ defmodule TateExplorer.Mixfile do
       { :postgrex, github: "ericmj/postgrex" },
       { :ecto, github: "elixir-lang/ecto"},
       { :json,   github: "cblage/elixir-json"},
+      { :exredis, github: "artemeff/exredis" },
       { :dynamo, "~> 0.1.0-dev", github: "elixir-lang/dynamo" } ]
   end
 end

@@ -3,6 +3,8 @@
   "dynamo": {:git, "git://github.com/elixir-lang/dynamo.git", "6e92de08f7e20e23264f8a24a2f1b1aeb04f96a3", []},
   "ecto": {:git, "git://github.com/elixir-lang/ecto.git", "9990a783aeda6b2e9a4b9f66f2a18b59c7f30fe2", []},
   "elixir_csv": {:git, "git://github.com/baldmountain/elixir_csv.git", "9dc936a4f124671303553003b0c4d9095c0e055d", []},
+  "eredis": {:git, "git://github.com/wooga/eredis.git", "313fce73b0fdb53f3a5f146a7adf19677b417cb5", [{:tag, "v1.0.6"}]},
+  "exredis": {:git, "git://github.com/artemeff/exredis.git", "8bc86b6d36590c793baa11a0067c872e6403492a", []},
   "hackney": {:git, "git://github.com/benoitc/hackney.git", "5b0f7eb949ebebd6fabfbc4e08a7b7231850606a", []},
   "json": {:git, "git://github.com/cblage/elixir-json.git", "9b55d6439ce61d7712a1218766c5cfffe011d070", []},
   "mimetypes": {:git, "git://github.com/spawngrid/mimetypes.git", "47d37a977a7d633199822bf6b08353007483d00f", []},
