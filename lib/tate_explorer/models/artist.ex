@@ -1,5 +1,6 @@
 defmodule TateExplorer.Artist do
   use Ecto.Model
+  import Conversions
 
   alias TateExplorer.Repo
 
@@ -24,19 +25,12 @@ defmodule TateExplorer.Artist do
       name: Enum.at(data, 1),
       gender: Enum.at(data, 2),
       dates: Enum.at(data, 3),
-      year_of_birth: Enum.at(data, 4) |> datetime_from_year,
-      year_of_death: Enum.at(data, 5) |> datetime_from_year,
+      year_of_birth: Enum.at(data, 4) |> datetime_from_year_string,
+      year_of_death: Enum.at(data, 5) |> datetime_from_year_string,
       place_of_birth: Enum.at(data, 6),
       place_of_death: Enum.at(data, 7),
       url: Enum.at(data, 8)
     )
     Repo.create(artist)
   end
-
-  defp datetime_from_year(""), do: nil
-  defp datetime_from_year(year_string) do
-    year_integer = binary_to_integer(year_string)
-    Ecto.DateTime[year: year_integer, month: 1, day: 1, hour: 0, min: 0, sec: 0]
-  end
-
 end
