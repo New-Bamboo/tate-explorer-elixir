@@ -3,6 +3,7 @@ defmodule TateExplorer.Artist do
   import Conversions
 
   alias TateExplorer.Repo
+  alias TateExplorer.Artwork
 
   validate artist,
     name: present()
@@ -16,6 +17,8 @@ defmodule TateExplorer.Artist do
     field :place_of_birth, :string
     field :place_of_death, :string
     field :url, :string
+
+    has_many :artworks, Artwork
   end
 
   def import_from_csv_string(csv_string) do
