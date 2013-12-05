@@ -4,7 +4,7 @@ Small webapp to browse the Tate Modern Gallery Collection.
 
 Data is available at: <https://github.com/tategallery/collection> in csv format.
 
-Being built with Elixir, Dynamo and Postgresql.
+Being built with Elixir, Dynamo, Postgresql and Redis.
 
 Assuming all dependencies are met:
 
