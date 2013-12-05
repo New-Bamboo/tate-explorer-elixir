@@ -30,9 +30,9 @@ defmodule TateExplorer.Artwork do
   def import_from_csv_string(csv_string) do
     data = CSV.parse(csv_string) |> List.flatten
     artwork = new(
-      id: Enum.at(data, 0) |> binary_to_integer,
+      id: Enum.at(data, 0) |> string_id_to_integer,
       accession_number: Enum.at(data, 1),
-      artist_id: Enum.at(data, 3) |> binary_to_integer,
+      artist_id: Enum.at(data, 3) |> string_id_to_integer,
       title: Enum.at(data, 4),
       date: Enum.at(data, 5),
       credits: Enum.at(data, 6),

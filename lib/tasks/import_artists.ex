@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.Import do
+defmodule Mix.Tasks.ImportArtists do
   use Mix.Task
 
   @shortdoc "Import artists from csv."

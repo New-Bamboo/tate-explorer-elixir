@@ -8,6 +8,6 @@ defmodule TateExplorer.ArtistQueries do
     query = from artist in Artist,
             select: artist,
             order_by: artist.name
-    Repo.all(from q in query, limit: limit)
+    Repo.all(from q in query, preload: :artworks, limit: limit)
   end
 end

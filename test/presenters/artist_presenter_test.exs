@@ -27,7 +27,8 @@ defmodule ArtistPresenterTest do
       year_of_death: 2084,
       place_of_birth: "Milano",
       place_of_death: "London",
-      url: "http://www.google.com"
+      url: "http://www.google.com",
+      artworks: []
     ]
   end
 end
