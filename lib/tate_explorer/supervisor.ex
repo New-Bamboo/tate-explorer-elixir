@@ -6,7 +6,7 @@ defmodule TateExplorer.Supervisor do
   end
 
   def init([]) do
-    tree = [ worker(TateExplorer.Dynamo, []), worker(TateExplorer.Repo, []) ]
+    tree = [ worker(TateExplorer.Dynamo, []), worker(TateExplorer.Repo, []), worker(TateExplorer.Cache, []) ]
     supervise(tree, strategy: :one_for_all)
   end
 end

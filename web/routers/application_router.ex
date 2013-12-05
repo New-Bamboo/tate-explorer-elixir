@@ -3,6 +3,7 @@ defmodule ApplicationRouter do
 
   alias TateExplorer.ArtistQueries
   alias TateExplorer.ArtistPresenter
+  alias TateExplorer.Cache
 
   filter JSON.Dynamo.Filter
 
@@ -23,7 +24,21 @@ defmodule ApplicationRouter do
   end
 
   get "/artists" do
-    conn.put_private :result_object, ArtistQueries.all |> ArtistPresenter.wrap_list
+    conn.resp 200, get_artists
   end
+
+  defp get_artists do
+    result = Cache.get("artists")
+    do_get_artists(result)
+  end
+
+  defp do_get_artists(:undefined) do
+    artists = ArtistQueries.all |> ArtistPresenter.wrap_list
+    { :ok, json } = JSON.encode(artists)
+    Cache.store("artists", json)
+    json
+  end
+
+  defp do_get_artists(data), do: data
 
 end
