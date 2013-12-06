@@ -32,5 +32,4 @@ defmodule TateExplorer.Cache do
   defp start_redis_server(_) do
     Exredis.start_link
   end
-
 end
