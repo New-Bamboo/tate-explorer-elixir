@@ -6,6 +6,7 @@ defmodule Conversions do
   end
 
   def string_id_to_integer(""), do: nil
+  def string_id_to_integer(nil), do: nil
   def string_id_to_integer(string_id) do
     binary_to_integer(string_id)
   end

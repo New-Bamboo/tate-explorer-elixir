@@ -24,21 +24,26 @@ defmodule ApplicationRouter do
   end
 
   get "/artists" do
-    conn.resp 200, get_artists
+    query_options = Paginator.build_query_options(
+      conn.params[:page] |> Conversions.string_id_to_integer,
+      conn.params[:per_page] |> Conversions.string_id_to_integer
+    )
+    conn.resp 200, get_artists(query_options)
   end
 
-  defp get_artists do
-    result = Cache.get("artists")
-    do_get_artists(result)
+  defp get_artists(query_options) do
+    [ limit: limit_value, offset: offset_value ] = query_options
+    result = Cache.get("artists-#{limit_value}-#{offset_value}")
+    do_get_artists(result, query_options)
   end
 
-  defp do_get_artists(:undefined) do
-    artists = ArtistQueries.all |> ArtistPresenter.wrap_list
+  defp do_get_artists(:undefined, query_options) do
+    [ limit: limit_value, offset: offset_value ] = query_options
+    artists = ArtistQueries.all(query_options) |> ArtistPresenter.wrap_list
     { :ok, json } = JSON.encode(artists)
-    Cache.store("artists", json)
+    Cache.store("artists-#{limit_value}-#{offset_value}", json)
     json
   end
-
-  defp do_get_artists(data), do: data
+  defp do_get_artists(data, _), do: data
 
 end
